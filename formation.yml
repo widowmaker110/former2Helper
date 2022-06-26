@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Metadata:
+    Generator: "former2"
+Description: ""
+Resources:
+    LambdaFunction:
+        Type: "AWS::Lambda::Function"
+        Properties:
+            Description: ""
+            FunctionName: "S3_Document_Drop"
+            Handler: "lambda_function.lambda_handler"
+            Architectures:
+              - "arm64"
+            Code:
+                S3Bucket: "prod-04-2014-tasks"
+                S3Key: "/snapshots/126660011989/S3_Document_Drop-e107c14a-df92-4400-a6fc-bc5cfc0cd080"
+                S3ObjectVersion: "o5IFbWu5z4qTGdxjQO0Fa8mQi6F9vE4U"
+            MemorySize: 1024
+            Role: "arn:aws:iam::126660011989:role/service-role/S3_Document_Drop-role-7sp853r5"
+            Runtime: "python3.9"
+            Timeout: 60
+            TracingConfig:
+                Mode: "PassThrough"
+            Layers:
+              - !Sub "arn:aws:lambda:${AWS::Region}:126660011989:layer:docx2txt:1"
+            EphemeralStorage:
+                Size: 512
+
+    S3Bucket:
+        Type: "AWS::S3::Bucket"
+        Properties:
+            BucketName: "church-miller-wedding.com"
+            WebsiteConfiguration:
+                IndexDocument: "index.html"
+
