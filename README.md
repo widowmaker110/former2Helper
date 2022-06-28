@@ -4,7 +4,7 @@
 
 CLOUDFORMATION FORMAT ONLY
 
-Used Pytrhon 3.10 when developing this.
+Used Python 3.10 when developing this.
 
 # Setup
 
